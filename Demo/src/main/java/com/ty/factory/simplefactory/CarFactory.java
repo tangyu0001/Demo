@@ -3,15 +3,17 @@ package com.ty.factory.simplefactory;
 public class CarFactory {
 
 
-    public static Car createAudi(){
-        return new Audi();
+    public static Car create(Class<Audi> clazz){
+        try {
+            if(clazz !=null){
+                return clazz.newInstance();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
-    public static Car createBenz(){
-        return new Benz();
-    }
 
-    public static Car createBMW(){
-        return new BMW();
-    }
 }
